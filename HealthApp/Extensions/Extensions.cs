@@ -9,5 +9,10 @@ namespace HealthApp.Extensions
         {
             return new DoctorDto(doctor.id, doctor.firstname, doctor.lastname, doctor.birthdate, doctor.graduation_date, doctor.phone_number, doctor.email);
         }
+
+        public static ClinicalSpecialtyDto AsDto(this ClinicalSpecialty clinicalSpecialty)
+        {
+            return new ClinicalSpecialtyDto(clinicalSpecialty.id, clinicalSpecialty.field, clinicalSpecialty.specialty, clinicalSpecialty.description);
+        }
     }
 }

@@ -1,29 +1,27 @@
-﻿using System;
+﻿using Models.Entities;
+using Models.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DataAccess.SQLClient;
-using Models.Entities;
-using Models.Interfaces;
 using Microsoft.Data.SqlClient;
+using DataAccess.SQLClient;
 using System.Data;
 
 namespace DataAccess.Repositories
 {
-    public class DoctorRepository : IRepository<Doctor>
+    public class ClinicalSpecialtyRepository : IClinicalRepository<ClinicalSpecialty>
     {
-
         private readonly Client sqlClient;
 
-        public DoctorRepository(Client sqlClient)
+        public ClinicalSpecialtyRepository(Client sqlClient)
         {
             //DEPENDENCY INJECTION
             this.sqlClient = sqlClient;
         }
 
-
-        public bool CreateDoctor(Doctor doctor)
+        public bool CreateSpecialty(ClinicalSpecialty clinicalSpecialty)
         {
             //INSERT DOCTOR TO THE DATABASE
             SqlConnection sqlConnection = new SqlConnection();
@@ -31,17 +29,14 @@ namespace DataAccess.Repositories
             {
                 sqlConnection.ConnectionString = sqlClient.GetStringConnection();
 
-                SqlCommand sqlCommand = new SqlCommand("INSERT INTO Doctor (firstname, lastname, birthdate, graduation_date, phone_number, email) VALUES (@firstname, @lastname, @birthdate, @graduation_date, @phone_number, @email)", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("INSERT INTO ClinicalSpecialty (field, specialty, description) VALUES (@field, @specialty, @description)", sqlConnection);
 
                 sqlCommand.Parameters.Clear();
                 List<SqlParameter> list = new List<SqlParameter>();
 
-                list.Add(new SqlParameter("@firstname", doctor.firstname));
-                list.Add(new SqlParameter("@lastname", doctor.lastname));
-                list.Add(new SqlParameter("@birthdate", doctor.birthdate));
-                list.Add(new SqlParameter("@graduation_date", doctor.graduation_date));
-                list.Add(new SqlParameter("@phone_number", doctor.phone_number));
-                list.Add(new SqlParameter("@email", doctor.email));
+                list.Add(new SqlParameter("@field", clinicalSpecialty.field));
+                list.Add(new SqlParameter("@specialty", clinicalSpecialty.specialty));
+                list.Add(new SqlParameter("@description", clinicalSpecialty.description));
 
                 sqlCommand.Parameters.AddRange(list.ToArray<SqlParameter>());                
 
@@ -62,11 +57,9 @@ namespace DataAccess.Repositories
             }
         }
 
-        public IEnumerable<Doctor> GetAllDoctors()
+        public IEnumerable<ClinicalSpecialty> GetAllSpecialties()
         {
-            //GET ALL THE EXISTING DOCTORS
-
-            List<Doctor> doctorsList = new List<Doctor>();
+            List<ClinicalSpecialty> specialtiesList = new List<ClinicalSpecialty>();
             SqlConnection sqlConnection = new SqlConnection();
             try
             {
@@ -74,9 +67,9 @@ namespace DataAccess.Repositories
 
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("SELECT id, firstname, lastname, birthdate, graduation_date, phone_number, email " +
-                                                       "FROM Doctor", sqlConnection);
-                sqlCommand.CommandType = System.Data.CommandType.Text;
+                SqlCommand sqlCommand = new SqlCommand("SELECT id, field, specialty, description " +
+                                                       "FROM ClinicalSpecialty", sqlConnection);
+                sqlCommand.CommandType = CommandType.Text;
 
                 SqlDataReader reader;
 
@@ -84,15 +77,12 @@ namespace DataAccess.Repositories
 
                 while (reader.Read())
                 {
-                    Doctor doctor = new Doctor();
-                    doctor.id = Int32.Parse(reader["id"].ToString());
-                    doctor.firstname = reader["firstname"].ToString();
-                    doctor.lastname = reader["lastname"].ToString();
-                    doctor.birthdate = reader["birthdate"].ToString();
-                    doctor.graduation_date = reader["graduation_date"].ToString();
-                    doctor.phone_number = reader["phone_number"].ToString();
-                    doctor.email = reader["email"].ToString();
-                    doctorsList.Add(doctor);
+                    ClinicalSpecialty clinicalSpecialty = new ClinicalSpecialty();
+                    clinicalSpecialty.id = Int32.Parse(reader["id"].ToString());
+                    clinicalSpecialty.field = reader["field"].ToString();
+                    clinicalSpecialty.specialty = reader["specialty"].ToString();
+                    clinicalSpecialty.description = reader["description"].ToString();
+                    specialtiesList.Add(clinicalSpecialty);
                 }
 
             }
@@ -105,14 +95,13 @@ namespace DataAccess.Repositories
                 sqlConnection.Close();
             }
 
-            return doctorsList;
-
+            return specialtiesList;
         }
 
-        public Doctor GetDoctor(int id)
+        public ClinicalSpecialty GetSpecialty(int id)
         {
-            //GET A DOCTOR IN PARTICULAR
-            Doctor doctor = new Doctor();
+            //GET A SPECIALTY IN PARTICULAR
+            ClinicalSpecialty clinicalSpecialty = new ClinicalSpecialty();
             SqlConnection sqlConnection = new SqlConnection();
             try
             {
@@ -120,9 +109,9 @@ namespace DataAccess.Repositories
 
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("SELECT  id, firstname, lastname, birthdate, graduation_date, phone_number, email FROM Doctor WHERE id = @id", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT  id, field, specialty, description FROM ClinicalSpecialty WHERE id = @id", sqlConnection);
 
-                sqlCommand.CommandType = System.Data.CommandType.Text;
+                sqlCommand.CommandType = CommandType.Text;
 
                 sqlCommand.Parameters.Add("@id", SqlDbType.Int);
 
@@ -134,15 +123,12 @@ namespace DataAccess.Repositories
 
                 while (reader.Read())
                 {
-                    doctor.id = Int32.Parse(reader["id"].ToString());
-                    doctor.firstname = reader["firstname"].ToString();
-                    doctor.lastname = reader["lastname"].ToString();
-                    doctor.birthdate = reader["birthdate"].ToString();
-                    doctor.graduation_date = reader["graduation_date"].ToString();
-                    doctor.phone_number = reader["phone_number"].ToString();
-                    doctor.email = reader["email"].ToString();
-                }
+                    clinicalSpecialty.id = Int32.Parse(reader["id"].ToString());
+                    clinicalSpecialty.field = reader["field"].ToString();
+                    clinicalSpecialty.specialty = reader["specialty"].ToString();
+                    clinicalSpecialty.description = reader["description"].ToString();
 
+                }
             }
             catch (Exception ex)
             {
@@ -152,11 +138,11 @@ namespace DataAccess.Repositories
             {
                 sqlConnection.Close();
             }
+            return clinicalSpecialty;
 
-            return doctor;
         }
 
-        public bool UpdateDoctor(Doctor doctor)
+        public bool UpdateSpecialty(ClinicalSpecialty clinicalSpecialty)
         {
             //UPDATE AN ESPECIFIC DOCTOR
             SqlConnection sqlConnection = new SqlConnection();
@@ -166,22 +152,19 @@ namespace DataAccess.Repositories
 
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("UPDATE Doctor SET firstname = " +
-                                                       "@firstname, lastName = @lastname, birthdate  = @birthdate, phone_number = @phone_number, email = @email" +
+                SqlCommand sqlCommand = new SqlCommand("UPDATE ClinicalSpecialty SET description  = @description" +
                                                        " WHERE id = @id", sqlConnection);
 
-                sqlCommand.CommandType = System.Data.CommandType.Text;
+                sqlCommand.CommandType = CommandType.Text;
 
                 sqlCommand.Parameters.Clear();
 
                 List<SqlParameter> list = new List<SqlParameter>();
 
-                list.Add(new SqlParameter("@id", doctor.id));
-                list.Add(new SqlParameter("@firstname", doctor.firstname));
-                list.Add(new SqlParameter("@lastname", doctor.lastname));
-                list.Add(new SqlParameter("@birthdate", doctor.birthdate));
-                list.Add(new SqlParameter("@phone_number", doctor.phone_number));
-                list.Add(new SqlParameter("@email", doctor.email));
+                list.Add(new SqlParameter("@id", clinicalSpecialty.id));
+                list.Add(new SqlParameter("@field", clinicalSpecialty.field));
+                list.Add(new SqlParameter("@specialty", clinicalSpecialty.specialty));
+                list.Add(new SqlParameter("@description", clinicalSpecialty.description));
 
                 sqlCommand.Parameters.AddRange(list.ToArray<SqlParameter>());
 
@@ -201,7 +184,7 @@ namespace DataAccess.Repositories
             }
         }
 
-        public bool RemoveDoctor(int id)
+        public bool RemoveSpecialty(int id)
         {
             SqlConnection sqlConnection = new SqlConnection();
             try
@@ -210,8 +193,8 @@ namespace DataAccess.Repositories
 
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("DELETE FROM Doctor WHERE id = @id", sqlConnection);
-                sqlCommand.CommandType = System.Data.CommandType.Text;
+                SqlCommand sqlCommand = new SqlCommand("DELETE FROM ClinicalSpecialty WHERE id = @id", sqlConnection);
+                sqlCommand.CommandType = CommandType.Text;
 
                 sqlCommand.Parameters.Add("@id", SqlDbType.Int);
 
@@ -232,8 +215,6 @@ namespace DataAccess.Repositories
             {
                 sqlConnection.Close();
             }
-
         }
-
     }
 }

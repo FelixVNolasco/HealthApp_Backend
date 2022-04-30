@@ -32,6 +32,7 @@ namespace HealthApp
 
             services.AddScoped<Client>();
             services.AddScoped<IRepository<Doctor>, DoctorRepository>();
+            services.AddScoped<IClinicalRepository<ClinicalSpecialty>, ClinicalSpecialtyRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
