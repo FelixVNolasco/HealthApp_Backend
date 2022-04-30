@@ -7,6 +7,7 @@ using DataAccess.SQLClient;
 using Models.Entities;
 using Models.Interfaces;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace DataAccess.Repositories
 {
@@ -22,7 +23,7 @@ namespace DataAccess.Repositories
         }
 
 
-        public Doctor CreateDoctor(Doctor doctor)
+        public bool CreateDoctor(Doctor doctor)
         {
             //INSERT DOCTOR TO THE DATABASE
             SqlConnection sqlConnection = new SqlConnection();
@@ -30,30 +31,44 @@ namespace DataAccess.Repositories
             {
                 sqlConnection.ConnectionString = sqlClient.GetStringConnection();
 
+                SqlCommand sqlCommand = new SqlCommand("INSERT INTO Doctor (firstname, lastname, birthdate, graduation_date, phone_number, email) VALUES (@firstname, @lastname, @birthdate, @graduation_date, @phone_number, @email)", sqlConnection);
+
+                sqlCommand.Parameters.Clear();
+                List<SqlParameter> list = new List<SqlParameter>();
+
+                list.Add(new SqlParameter("@firstname", doctor.firstname));
+                list.Add(new SqlParameter("@lastname", doctor.lastname));
+                list.Add(new SqlParameter("@birthdate", doctor.birthdate));
+                list.Add(new SqlParameter("@graduation_date", doctor.graduation_date));
+                list.Add(new SqlParameter("@phone_number", doctor.phone_number));
+                list.Add(new SqlParameter("@email", doctor.email));
+
+                sqlCommand.Parameters.AddRange(list.ToArray<SqlParameter>());
+
+                //sqlCommand.CommandType = System.Data.CommandType.Text;
+
                 sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
 
-                SqlCommand sqlCommand = new SqlCommand("", sqlConnection);
-
+                return true;
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine("{0}", ex);
+                return false;
             }
             finally
             {
                 sqlConnection.Close();
             }
-
-
-            Doctor doctor1 = new Doctor();
-            return doctor1;
         }
 
         public IEnumerable<Doctor> GetAllDoctors()
         {
             //GET ALL THE EXISTING DOCTORS
 
+            List<Doctor> doctorsList = new List<Doctor>();
             SqlConnection sqlConnection = new SqlConnection();
             try
             {
@@ -61,12 +76,27 @@ namespace DataAccess.Repositories
 
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Doctor", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT id, firstname, lastname, birthdate, graduation_date, phone_number, email " +
+                                                       "FROM Doctor", sqlConnection);
                 sqlCommand.CommandType = System.Data.CommandType.Text;
 
                 SqlDataReader reader;
 
                 reader = sqlCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Doctor doctor = new Doctor();
+                    doctor.id = Int32.Parse(reader["id"].ToString());
+                    doctor.firstname = reader["firstname"].ToString();
+                    doctor.lastname = reader["lastname"].ToString();
+                    doctor.birthdate = reader["birthdate"].ToString();
+                    doctor.graduation_date = reader["graduation_date"].ToString();
+                    doctor.phone_number = reader["phone_number"].ToString();
+                    doctor.email = reader["email"].ToString();
+                    doctorsList.Add(doctor);
+                }
+
             }
             catch (Exception ex)
             {
@@ -77,23 +107,14 @@ namespace DataAccess.Repositories
                 sqlConnection.Close();
             }
 
-            List<Doctor> doctorsList = new List<Doctor>();
-
-            Doctor doctor1 = new Doctor();
-
-            doctorsList.Add(doctor1);
-
-            Doctor doctor2 = new Doctor();
-
-            doctorsList.Add(doctor2);
-
             return doctorsList;
+
         }
 
         public Doctor GetDoctor(int id)
         {
             //GET A DOCTOR IN PARTICULAR
-
+            Doctor doctor = new Doctor();
             SqlConnection sqlConnection = new SqlConnection();
             try
             {
@@ -101,12 +122,29 @@ namespace DataAccess.Repositories
 
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Doctor", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT  id, firstname, lastname, birthdate, graduation_date, phone_number, email FROM Doctor WHERE id = @id", sqlConnection);
+
                 sqlCommand.CommandType = System.Data.CommandType.Text;
+
+                sqlCommand.Parameters.Add("@id", SqlDbType.Int);
+
+                sqlCommand.Parameters["@id"].Value = id;
 
                 SqlDataReader reader;
 
                 reader = sqlCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    doctor.id = Int32.Parse(reader["id"].ToString());
+                    doctor.firstname = reader["firstname"].ToString();
+                    doctor.lastname = reader["lastname"].ToString();
+                    doctor.birthdate = reader["birthdate"].ToString();
+                    doctor.graduation_date = reader["graduation_date"].ToString();
+                    doctor.phone_number = reader["phone_number"].ToString();
+                    doctor.email = reader["email"].ToString();
+                }
+
             }
             catch (Exception ex)
             {
@@ -116,11 +154,11 @@ namespace DataAccess.Repositories
             {
                 sqlConnection.Close();
             }
-            Doctor doctor1 = new Doctor();
-            return doctor1;
+
+            return doctor;
         }
 
-        public Doctor UpdateDoctor(Doctor doctor)
+        public bool UpdateDoctor(Doctor doctor)
         {
             //UPDATE AN ESPECIFIC DOCTOR
             SqlConnection sqlConnection = new SqlConnection();
@@ -130,27 +168,42 @@ namespace DataAccess.Repositories
 
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Doctor", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("UPDATE Doctor SET firstname = " +
+                                                       "@firstname, lastName = @lastname, birthdate  = @birthdate, phone_number = @phone_number, email = @email" +
+                                                       " WHERE id = @id", sqlConnection);
+
                 sqlCommand.CommandType = System.Data.CommandType.Text;
 
-                SqlDataReader reader;
+                sqlCommand.Parameters.Clear();
 
-                reader = sqlCommand.ExecuteReader();
+                List<SqlParameter> list = new List<SqlParameter>();
+
+                list.Add(new SqlParameter("@id", doctor.id));
+                list.Add(new SqlParameter("@firstname", doctor.firstname));
+                list.Add(new SqlParameter("@lastname", doctor.lastname));
+                list.Add(new SqlParameter("@birthdate", doctor.birthdate));
+                list.Add(new SqlParameter("@phone_number", doctor.phone_number));
+                list.Add(new SqlParameter("@email", doctor.email));
+
+                sqlCommand.Parameters.AddRange(list.ToArray<SqlParameter>());
+
+                sqlCommand.ExecuteNonQuery();
+
+                return true;
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine("{0}", ex);
+                return false;
             }
             finally
             {
                 sqlConnection.Close();
             }
-
-            Doctor doctor1 = new Doctor();
-            return doctor1;
         }
 
-        public Doctor RemoveDoctor(int id)
+        public bool RemoveDoctor(int id)
         {
             SqlConnection sqlConnection = new SqlConnection();
             try
@@ -159,24 +212,29 @@ namespace DataAccess.Repositories
 
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("SELECT * FROM Doctor", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("DELETE FROM Doctor WHERE id = @id", sqlConnection);
                 sqlCommand.CommandType = System.Data.CommandType.Text;
+
+                sqlCommand.Parameters.Add("@id", SqlDbType.Int);
+
+                sqlCommand.Parameters["@id"].Value = id;
 
                 SqlDataReader reader;
 
                 reader = sqlCommand.ExecuteReader();
+
+                return true;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("{0}", ex);
+                return false;
             }
             finally
             {
                 sqlConnection.Close();
             }
 
-            Doctor doctor1 = new Doctor();
-            return doctor1;
         }
 
     }

@@ -9,10 +9,10 @@ namespace Models.Interfaces
 {
     public interface IRepository<T> where T : IEntity
     {
-        Doctor CreateDoctor(T entity);
+        bool CreateDoctor(T entity);
         IEnumerable<Doctor> GetAllDoctors();
         Doctor GetDoctor(int id);
-        Doctor RemoveDoctor(int id);
-        Doctor UpdateDoctor(T entity);
+        bool RemoveDoctor(int id);
+        bool UpdateDoctor(T entity);
     }
 }

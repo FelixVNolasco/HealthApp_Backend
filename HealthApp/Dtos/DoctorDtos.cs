@@ -4,30 +4,32 @@ namespace HealthApp.Dtos
 {
 
     public record DoctorDto(
-        //int id, 
-        //string firstName, 
-        //string lastName, 
-        //string email, 
-        //string career, 
-        //string school, 
-        //bool signedUp
+        int id,
+        string firstName,
+        string lastName,
+        string birthdate,
+        string graduation_date,
+        string phone_number,
+        string email
         );
 
     public record CreateDoctorDto(
-        //[Required] string firstName, 
-        //string boleta, 
-        //string lastName, 
-        //string email, 
-        //string career, 
-        //string school, 
-        //bool signedUp
+        [Required] 
+        string firstName,
+        string lastName,
+        string birthdate,
+        string graduation_date,
+        string phone_number,
+        string email                       
         );
 
     public record UpdateDoctorDto(
-        //[Required] string firstName, 
-        //string boleta, 
-        //string lastName, 
-        //string email
+        [Required]
+        string firstName,
+        string lastName,
+        string birthdate,
+        string phone_number,
+        string email
         );
 
 }

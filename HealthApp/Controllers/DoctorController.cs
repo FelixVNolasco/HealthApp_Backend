@@ -21,55 +21,98 @@ namespace HealthApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateDoctor(CreateDoctorDto doctor)
+        public IActionResult CreateDoctor(CreateDoctorDto createDoctorDto)
         {
 
-            var newDoctor = new Doctor
+            var doctor = new Doctor
             {
-
+                firstname = createDoctorDto.firstName,
+                lastname = createDoctorDto.lastName,
+                birthdate = createDoctorDto.birthdate,
+                graduation_date = createDoctorDto.graduation_date,
+                phone_number = createDoctorDto.phone_number,
+                email = createDoctorDto.email
             };
-            doctorRepository.CreateDoctor(newDoctor);
 
-            return Ok(newDoctor);
-            //return newDoctor;
+            var responseStatusOk = doctorRepository.CreateDoctor(doctor);
+
+            if (responseStatusOk)
+            {
+                return Created("doctors", doctor);
+            }
+            else
+            {
+                return BadRequest("Something Went Wrong");
+            }
+
         }
 
         [HttpGet]
         public IEnumerable<DoctorDto> GetAllStudents()
         {
-            var doctors= (doctorRepository.GetAllDoctors()).Select(doctor => doctor.AsDto());
+            var doctors = (doctorRepository.GetAllDoctors()).Select(doctor => doctor.AsDto());
             return doctors;
         }
 
         [HttpGet("{id}")]
-        public DoctorDto GetDoctor(int id)
+        public IActionResult GetDoctor(int id)
         {
             var particularDoctor = doctorRepository.GetDoctor(id);
-            return particularDoctor.AsDto();
+
+            if (particularDoctor.id == 0)
+            {
+                return BadRequest("The user doesn't exists");
+            }
+            else
+            {
+                return Ok(particularDoctor);
+            }
+
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateDoctor(int id, UpdateDoctorDto doctor)
+        public IActionResult UpdateDoctor(int id, UpdateDoctorDto updateDoctorDto)
         {
             var existingDoctor = doctorRepository.GetDoctor(id);
+
             if (existingDoctor == null)
             {
-                return BadRequest();
+                return BadRequest("The user doesn't exists");
 
             }
-            doctorRepository.UpdateDoctor(existingDoctor);
-            //doctorRepository.UpdateDoctor(doctor);
-            return Ok();
+
+            existingDoctor.firstname = updateDoctorDto.firstName;
+            existingDoctor.lastname = updateDoctorDto.lastName;
+            existingDoctor.birthdate = updateDoctorDto.birthdate;
+            existingDoctor.phone_number = updateDoctorDto.phone_number;
+            existingDoctor.email = updateDoctorDto.email;
+
+            var responseStatusOk = doctorRepository.UpdateDoctor(existingDoctor);
+
+            if (responseStatusOk)
+            {
+                return Ok("Succesfully Updated");
+            }
+            else
+            {
+                return BadRequest("Something Went Wrong");
+            }
         }
 
 
         [HttpDelete("{id}")]
         public IActionResult DeleteDoctor(int id)
         {
-            var deletedDoctor = doctorRepository.RemoveDoctor(id);
+            var responseStatusOk = doctorRepository.RemoveDoctor(id);
 
-            return Ok(deletedDoctor);
-            //return deletedDoctor;
+            if (responseStatusOk)
+            {
+                return Ok("Succesfully Deleted");
+            }
+            else
+            {
+                return BadRequest("Something Went Wrong");
+            }
         }
 
     }

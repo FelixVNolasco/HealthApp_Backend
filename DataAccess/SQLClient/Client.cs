@@ -6,7 +6,7 @@ namespace DataAccess.SQLClient
     {
         public string GetStringConnection()
         {
-            var stringConnection = "server=(localdb)\\MSSQLLocalDb;database=StudentsDB;Trusted_Connection=true";
+            var stringConnection = "server=(localdb)\\MSSQLLocalDb;database=HealthApp;Trusted_Connection=true;Integrated Security=False";
             return stringConnection;
         }
     }
