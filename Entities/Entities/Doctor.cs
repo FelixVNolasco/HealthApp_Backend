@@ -11,5 +11,8 @@ namespace Models.Entities
         public string graduation_date { get; set; }
         public string phone_number { get; set; }
         public string email { get; set; }
+        public string field { get; set; }
+        public string specialty { get; set; }
+        public string description { get; set; }
     }
 }

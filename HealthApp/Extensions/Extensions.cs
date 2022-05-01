@@ -7,7 +7,7 @@ namespace HealthApp.Extensions
     {
         public static DoctorDto AsDto(this Doctor doctor)
         {
-            return new DoctorDto(doctor.id, doctor.firstname, doctor.lastname, doctor.birthdate, doctor.graduation_date, doctor.phone_number, doctor.email);
+            return new DoctorDto(doctor.id, doctor.firstname, doctor.lastname, doctor.birthdate, doctor.graduation_date, doctor.phone_number, doctor.email, doctor.specialty);
         }
 
         public static ClinicalSpecialtyDto AsDto(this ClinicalSpecialty clinicalSpecialty)

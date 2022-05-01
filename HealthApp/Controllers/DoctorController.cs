@@ -31,14 +31,15 @@ namespace HealthApp.Controllers
                 birthdate = createDoctorDto.birthdate,
                 graduation_date = createDoctorDto.graduation_date,
                 phone_number = createDoctorDto.phone_number,
-                email = createDoctorDto.email
+                email = createDoctorDto.email,
+                specialty = createDoctorDto.specialty
             };
 
             var responseStatusOk = doctorRepository.CreateDoctor(doctor);
 
             if (responseStatusOk)
             {
-                return Created("doctors", doctor);
+                return Created("doctors", "Se ha creado correctamente el nuevo doctor");
             }
             else
             {

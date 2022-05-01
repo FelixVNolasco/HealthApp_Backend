@@ -31,7 +31,7 @@ namespace DataAccess.Repositories
             {
                 sqlConnection.ConnectionString = sqlClient.GetStringConnection();
 
-                SqlCommand sqlCommand = new SqlCommand("INSERT INTO Doctor (firstname, lastname, birthdate, graduation_date, phone_number, email) VALUES (@firstname, @lastname, @birthdate, @graduation_date, @phone_number, @email)", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("INSERT INTO Doctor (firstname, lastname, birthdate, graduation_date, phone_number, email, specialty) VALUES (@firstname, @lastname, @birthdate, @graduation_date, @phone_number, @email, @specialty)", sqlConnection);
 
                 sqlCommand.Parameters.Clear();
                 List<SqlParameter> list = new List<SqlParameter>();
@@ -42,6 +42,7 @@ namespace DataAccess.Repositories
                 list.Add(new SqlParameter("@graduation_date", doctor.graduation_date));
                 list.Add(new SqlParameter("@phone_number", doctor.phone_number));
                 list.Add(new SqlParameter("@email", doctor.email));
+                list.Add(new SqlParameter("@specialty", doctor.specialty));
 
                 sqlCommand.Parameters.AddRange(list.ToArray<SqlParameter>());                
 
@@ -71,15 +72,13 @@ namespace DataAccess.Repositories
             try
             {
                 sqlConnection.ConnectionString = sqlClient.GetStringConnection();
-
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("SELECT id, firstname, lastname, birthdate, graduation_date, phone_number, email " +
+                SqlCommand sqlCommand = new SqlCommand("SELECT id, firstname, lastname, birthdate, graduation_date, phone_number, email, specialty " +
                                                        "FROM Doctor", sqlConnection);
-                sqlCommand.CommandType = System.Data.CommandType.Text;
+                sqlCommand.CommandType = CommandType.Text;
 
                 SqlDataReader reader;
-
                 reader = sqlCommand.ExecuteReader();
 
                 while (reader.Read())
@@ -92,6 +91,7 @@ namespace DataAccess.Repositories
                     doctor.graduation_date = reader["graduation_date"].ToString();
                     doctor.phone_number = reader["phone_number"].ToString();
                     doctor.email = reader["email"].ToString();
+                    doctor.specialty = reader["specialty"].ToString();
                     doctorsList.Add(doctor);
                 }
 
@@ -120,16 +120,20 @@ namespace DataAccess.Repositories
 
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("SELECT  id, firstname, lastname, birthdate, graduation_date, phone_number, email FROM Doctor WHERE id = @id", sqlConnection);
+                //SqlCommand sqlCommand = new SqlCommand("SELECT  id, firstname, lastname, birthdate, graduation_date, phone_number, email FROM Doctor WHERE id = @id", sqlConnection);
 
-                sqlCommand.CommandType = System.Data.CommandType.Text;
+                //SqlCommand sqlCommand = new SqlCommand("SELECT Doctor.id, firstname, lastname, birthdate, graduation_date, phone_number, email, ClinicalSpecialty.field, ClinicalSpecialty.specialty, ClinicalSpecialty.description "
+                //                        + "FROM Doctor "
+                //                        + "INNER JOIN ClinicalSpecialty ON ClinicalSpecialty.id = Doctor.specialty "
+                //                        + "WHERE Doctor.id = @id;", sqlConnection);
 
+                SqlCommand sqlCommand = new SqlCommand("SELECT id, firstname, lastname, birthdate, graduation_date, phone_number, email, specialty FROM Doctor WHERE id = @id", sqlConnection);
+
+                sqlCommand.CommandType = CommandType.Text;
                 sqlCommand.Parameters.Add("@id", SqlDbType.Int);
-
                 sqlCommand.Parameters["@id"].Value = id;
 
                 SqlDataReader reader;
-
                 reader = sqlCommand.ExecuteReader();
 
                 while (reader.Read())
@@ -141,6 +145,26 @@ namespace DataAccess.Repositories
                     doctor.graduation_date = reader["graduation_date"].ToString();
                     doctor.phone_number = reader["phone_number"].ToString();
                     doctor.email = reader["email"].ToString();
+                    doctor.field = reader["specialty"].ToString();
+                }
+
+                sqlConnection.Close();
+                sqlConnection.Open();
+
+                SqlCommand newSQLComman = new SqlCommand("SELECT field, specialty, description FROM ClinicalSpecialty WHERE id = @idSpecialty", sqlConnection);
+
+                newSQLComman.CommandType = CommandType.Text;
+                newSQLComman.Parameters.Add("@idSpecialty", SqlDbType.Int);
+                newSQLComman.Parameters["@idSpecialty"].Value = doctor.field;
+
+                SqlDataReader newReader;
+                newReader = newSQLComman.ExecuteReader();
+
+                while (newReader.Read())
+                {
+                    doctor.field = newReader["field"].ToString();
+                    doctor.specialty = newReader["specialty"].ToString();
+                    doctor.description = newReader["description"].ToString();
                 }
 
             }
@@ -163,17 +187,15 @@ namespace DataAccess.Repositories
             try
             {
                 sqlConnection.ConnectionString = sqlClient.GetStringConnection();
-
                 sqlConnection.Open();
 
                 SqlCommand sqlCommand = new SqlCommand("UPDATE Doctor SET firstname = " +
                                                        "@firstname, lastName = @lastname, birthdate  = @birthdate, phone_number = @phone_number, email = @email" +
                                                        " WHERE id = @id", sqlConnection);
 
-                sqlCommand.CommandType = System.Data.CommandType.Text;
+                sqlCommand.CommandType = CommandType.Text;
 
                 sqlCommand.Parameters.Clear();
-
                 List<SqlParameter> list = new List<SqlParameter>();
 
                 list.Add(new SqlParameter("@id", doctor.id));
@@ -184,7 +206,6 @@ namespace DataAccess.Repositories
                 list.Add(new SqlParameter("@email", doctor.email));
 
                 sqlCommand.Parameters.AddRange(list.ToArray<SqlParameter>());
-
                 sqlCommand.ExecuteNonQuery();
 
                 return true;
@@ -207,18 +228,14 @@ namespace DataAccess.Repositories
             try
             {
                 sqlConnection.ConnectionString = sqlClient.GetStringConnection();
-
                 sqlConnection.Open();
 
                 SqlCommand sqlCommand = new SqlCommand("DELETE FROM Doctor WHERE id = @id", sqlConnection);
-                sqlCommand.CommandType = System.Data.CommandType.Text;
-
+                sqlCommand.CommandType = CommandType.Text;
                 sqlCommand.Parameters.Add("@id", SqlDbType.Int);
-
                 sqlCommand.Parameters["@id"].Value = id;
 
                 SqlDataReader reader;
-
                 reader = sqlCommand.ExecuteReader();
 
                 return true;
