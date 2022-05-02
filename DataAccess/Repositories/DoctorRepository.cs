@@ -23,39 +23,67 @@ namespace DataAccess.Repositories
         }
 
 
-        public bool CreateDoctor(Doctor doctor)
+        public string CreateDoctor(Doctor doctor)
         {
             //INSERT DOCTOR TO THE DATABASE
             SqlConnection sqlConnection = new SqlConnection();
             try
             {
                 sqlConnection.ConnectionString = sqlClient.GetStringConnection();
-
-                SqlCommand sqlCommand = new SqlCommand("INSERT INTO Doctor (firstname, lastname, birthdate, graduation_date, phone_number, email, specialty) VALUES (@firstname, @lastname, @birthdate, @graduation_date, @phone_number, @email, @specialty)", sqlConnection);
-
-                sqlCommand.Parameters.Clear();
-                List<SqlParameter> list = new List<SqlParameter>();
-
-                list.Add(new SqlParameter("@firstname", doctor.firstname));
-                list.Add(new SqlParameter("@lastname", doctor.lastname));
-                list.Add(new SqlParameter("@birthdate", doctor.birthdate));
-                list.Add(new SqlParameter("@graduation_date", doctor.graduation_date));
-                list.Add(new SqlParameter("@phone_number", doctor.phone_number));
-                list.Add(new SqlParameter("@email", doctor.email));
-                list.Add(new SqlParameter("@specialty", doctor.specialty));
-
-                sqlCommand.Parameters.AddRange(list.ToArray<SqlParameter>());                
-
                 sqlConnection.Open();
-                sqlCommand.ExecuteNonQuery();
 
-                return true;
+                SqlCommand verifyCommand = new SqlCommand("SELECT distinct 1 id FROM ClinicalSpecialty WHERE id = @id", sqlConnection);
+                verifyCommand.CommandType = CommandType.Text;
+                verifyCommand.Parameters.Clear();
+                verifyCommand.Parameters.AddWithValue("@id", doctor.specialty);
+                
+                SqlDataReader reader;
+                reader = verifyCommand.ExecuteReader();
+
+                string specialtyExists = "";
+                while (reader.Read())
+                {
+                    specialtyExists = reader["id"].ToString();                    
+                }
+
+                sqlConnection.Close();
+
+
+                if (specialtyExists == "1")
+                {
+                    //Console.WriteLine("La especialidad SI existe");
+
+                    SqlCommand sqlCommand = new SqlCommand("INSERT INTO Doctor (firstname, lastname, birthdate, graduation_date, phone_number, email, specialty) VALUES (@firstname, @lastname, @birthdate, @graduation_date, @phone_number, @email, @specialty)", sqlConnection);
+
+                    sqlCommand.Parameters.Clear();
+                    List<SqlParameter> list = new List<SqlParameter>();
+
+                    list.Add(new SqlParameter("@firstname", doctor.firstname));
+                    list.Add(new SqlParameter("@lastname", doctor.lastname));
+                    list.Add(new SqlParameter("@birthdate", doctor.birthdate));
+                    list.Add(new SqlParameter("@graduation_date", doctor.graduation_date));
+                    list.Add(new SqlParameter("@phone_number", doctor.phone_number));
+                    list.Add(new SqlParameter("@email", doctor.email));
+                    list.Add(new SqlParameter("@specialty", doctor.specialty));
+
+                    sqlCommand.Parameters.AddRange(list.ToArray<SqlParameter>());
+
+                    sqlConnection.Open();
+                    sqlCommand.ExecuteNonQuery();
+                    sqlConnection.Close();
+
+                    return "1";
+                } else
+                {
+                    //Console.WriteLine("La especialidad NO existe");
+                    return "2";
+                }                
 
             }
             catch (Exception ex)
             {
                 Console.WriteLine("{0}", ex);
-                return false;
+                return "3";
             }
             finally
             {

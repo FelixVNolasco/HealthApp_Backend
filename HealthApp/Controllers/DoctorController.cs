@@ -37,9 +37,13 @@ namespace HealthApp.Controllers
 
             var responseStatusOk = doctorRepository.CreateDoctor(doctor);
 
-            if (responseStatusOk)
+            if (responseStatusOk == "1")
             {
                 return Created("doctors", "Se ha creado correctamente el nuevo doctor");
+            }
+            else if (responseStatusOk == "2")
+            {
+                return BadRequest("La especialidad no existe");
             }
             else
             {
