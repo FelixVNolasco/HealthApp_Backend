@@ -21,9 +21,9 @@ namespace DataAccess.Repositories
             this.sqlClient = sqlClient;
         }
 
+        //INSERT A SPECIALT INTO THE DATABASE
         public bool CreateSpecialty(ClinicalSpecialty clinicalSpecialty)
         {
-            //INSERT DOCTOR TO THE DATABASE
             SqlConnection sqlConnection = new SqlConnection();
             try
             {
@@ -38,7 +38,7 @@ namespace DataAccess.Repositories
                 list.Add(new SqlParameter("@specialty", clinicalSpecialty.specialty));
                 list.Add(new SqlParameter("@description", clinicalSpecialty.description));
 
-                sqlCommand.Parameters.AddRange(list.ToArray<SqlParameter>());                
+                sqlCommand.Parameters.AddRange(list.ToArray<SqlParameter>());
 
                 sqlConnection.Open();
                 sqlCommand.ExecuteNonQuery();
@@ -57,6 +57,7 @@ namespace DataAccess.Repositories
             }
         }
 
+        //GET A LIST OF ALL THE EXISTING SPECIALTIES
         public IEnumerable<ClinicalSpecialty> GetAllSpecialties()
         {
             List<ClinicalSpecialty> specialtiesList = new List<ClinicalSpecialty>();
@@ -98,9 +99,9 @@ namespace DataAccess.Repositories
             return specialtiesList;
         }
 
+        //GET A SPECIALTY IN PARTICULAR
         public ClinicalSpecialty GetSpecialty(int id)
         {
-            //GET A SPECIALTY IN PARTICULAR
             ClinicalSpecialty clinicalSpecialty = new ClinicalSpecialty();
             SqlConnection sqlConnection = new SqlConnection();
             try
@@ -142,9 +143,9 @@ namespace DataAccess.Repositories
 
         }
 
+        //UPDATE AN ESPECIFIC SPECIALTY
         public bool UpdateSpecialty(ClinicalSpecialty clinicalSpecialty)
         {
-            //UPDATE AN ESPECIFIC DOCTOR
             SqlConnection sqlConnection = new SqlConnection();
             try
             {
@@ -184,6 +185,7 @@ namespace DataAccess.Repositories
             }
         }
 
+        //REMOVE AN ESPECIFIC SPECIALTY
         public bool RemoveSpecialty(int id)
         {
             SqlConnection sqlConnection = new SqlConnection();

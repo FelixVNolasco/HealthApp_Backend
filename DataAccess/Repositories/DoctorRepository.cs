@@ -23,9 +23,9 @@ namespace DataAccess.Repositories
         }
 
 
+        //INSERT A DOCTOR INTO THE DATABASE
         public string CreateDoctor(Doctor doctor)
         {
-            //INSERT DOCTOR TO THE DATABASE
             SqlConnection sqlConnection = new SqlConnection();
             try
             {
@@ -36,14 +36,14 @@ namespace DataAccess.Repositories
                 verifyCommand.CommandType = CommandType.Text;
                 verifyCommand.Parameters.Clear();
                 verifyCommand.Parameters.AddWithValue("@id", doctor.specialty);
-                
+
                 SqlDataReader reader;
                 reader = verifyCommand.ExecuteReader();
 
                 string specialtyExists = "";
                 while (reader.Read())
                 {
-                    specialtyExists = reader["id"].ToString();                    
+                    specialtyExists = reader["id"].ToString();
                 }
 
                 sqlConnection.Close();
@@ -73,11 +73,12 @@ namespace DataAccess.Repositories
                     sqlConnection.Close();
 
                     return "1";
-                } else
+                }
+                else
                 {
                     //Console.WriteLine("La especialidad NO existe");
                     return "2";
-                }                
+                }
 
             }
             catch (Exception ex)
@@ -91,10 +92,9 @@ namespace DataAccess.Repositories
             }
         }
 
+        //GET ALL THE EXISTING DOCTORS
         public IEnumerable<Doctor> GetAllDoctors()
         {
-            //GET ALL THE EXISTING DOCTORS
-
             List<Doctor> doctorsList = new List<Doctor>();
             SqlConnection sqlConnection = new SqlConnection();
             try
@@ -137,9 +137,10 @@ namespace DataAccess.Repositories
 
         }
 
+        //GET A DOCTOR IN PARTICULAR
+
         public Doctor GetDoctor(int id)
         {
-            //GET A DOCTOR IN PARTICULAR
             Doctor doctor = new Doctor();
             SqlConnection sqlConnection = new SqlConnection();
             try
@@ -147,8 +148,6 @@ namespace DataAccess.Repositories
                 sqlConnection.ConnectionString = sqlClient.GetStringConnection();
 
                 sqlConnection.Open();
-
-                //SqlCommand sqlCommand = new SqlCommand("SELECT  id, firstname, lastname, birthdate, graduation_date, phone_number, email FROM Doctor WHERE id = @id", sqlConnection);
 
                 //SqlCommand sqlCommand = new SqlCommand("SELECT Doctor.id, firstname, lastname, birthdate, graduation_date, phone_number, email, ClinicalSpecialty.field, ClinicalSpecialty.specialty, ClinicalSpecialty.description "
                 //                        + "FROM Doctor "
@@ -208,9 +207,9 @@ namespace DataAccess.Repositories
             return doctor;
         }
 
+        //UPDATE AN ESPECIFIC DOCTOR
         public bool UpdateDoctor(Doctor doctor)
         {
-            //UPDATE AN ESPECIFIC DOCTOR
             SqlConnection sqlConnection = new SqlConnection();
             try
             {
@@ -250,6 +249,8 @@ namespace DataAccess.Repositories
             }
         }
 
+
+        //REMOVE AN ESPECIFIC DOCTOR
         public bool RemoveDoctor(int id)
         {
             SqlConnection sqlConnection = new SqlConnection();

@@ -34,7 +34,7 @@ namespace HealthApp.Controllers
 
             if (responseStatusOk)
             {
-                return Created("ClinicalSpeciatly", clinicalSpecialty);
+                return Created("La especialidad {0} se ha creado correctamente", clinicalSpecialty.specialty);
             }
             else
             {
@@ -77,8 +77,8 @@ namespace HealthApp.Controllers
 
             }
 
-            existingSpecialty.description= updateClinicalSpecialtyDto.description;
-                        
+            existingSpecialty.description = updateClinicalSpecialtyDto.description;
+
             var responseStatusOk = clinicalSpecialtyRepository.UpdateSpecialty(existingSpecialty);
 
             if (responseStatusOk)
