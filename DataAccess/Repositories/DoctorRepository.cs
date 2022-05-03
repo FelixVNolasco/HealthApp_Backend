@@ -11,7 +11,7 @@ using System.Data;
 
 namespace DataAccess.Repositories
 {
-    public class DoctorRepository : IRepository<Doctor>
+    public class DoctorRepository : IDoctorRepository<Doctor>
     {
 
         private readonly Client sqlClient;

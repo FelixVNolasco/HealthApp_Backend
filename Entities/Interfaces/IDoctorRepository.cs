@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Models.Interfaces
 {
-    public interface IRepository<T> where T : IEntity
+    public interface IDoctorRepository<T> where T : IEntity
     {
         string CreateDoctor(T entity);
         IEnumerable<Doctor> GetAllDoctors();

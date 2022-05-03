@@ -15,7 +15,7 @@ namespace HealthApp.Controllers
     {
         private readonly DoctorRepository doctorRepository;
 
-        public DoctorController(IRepository<Doctor> doctorRepository)
+        public DoctorController(IDoctorRepository<Doctor> doctorRepository)
         {
             this.doctorRepository = (DoctorRepository)doctorRepository;
         }

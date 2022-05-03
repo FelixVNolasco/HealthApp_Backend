@@ -14,5 +14,10 @@ namespace HealthApp.Extensions
         {
             return new ClinicalSpecialtyDto(clinicalSpecialty.id, clinicalSpecialty.field, clinicalSpecialty.specialty, clinicalSpecialty.description);
         }
+
+        public static MedicalCenterDto AsDto(this MedicalCenter medicalCenter)
+        {
+            return new MedicalCenterDto(medicalCenter.id, medicalCenter.address, medicalCenter.phoneNumber, medicalCenter.rating);
+        }
     }
 }

@@ -2,7 +2,6 @@
 using Models.Entities;
 using System.Collections.Generic;
 
-
 namespace Models.Interfaces
 {
     public interface IClinicalRepository<T> where T : IEntity

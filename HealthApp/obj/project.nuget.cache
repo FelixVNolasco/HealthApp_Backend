@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Qh1nZaEWkYpt12WTJ2isesFHo8UGGZyuR3Ahw/94xNBdK/Cfpp3W5n/jJ2dCNwowhU8QEMpdPI/eKqz55cZagA==",
+  "dgSpecHash": "0nNON2yKMGzj0rY0HWvfLfSbULIoytHgTEIBuT50s6Q9SG4d0SqaIL7zsHBNBfju3YL8m2ik3e7UcDo0gdgj/w==",
   "success": true,
-  "projectFilePath": "C:\\academia\\HealthApp\\HealthApp\\HealthApp.csproj",
+  "projectFilePath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\HealthApp\\HealthApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\felix\\.nuget\\packages\\azure.core\\1.6.0\\azure.core.1.6.0.nupkg.sha512",
     "C:\\Users\\felix\\.nuget\\packages\\azure.identity\\1.3.0\\azure.identity.1.3.0.nupkg.sha512",

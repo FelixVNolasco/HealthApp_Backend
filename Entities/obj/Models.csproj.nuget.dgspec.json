@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\academia\\HealthApp\\Entities\\Models.csproj": {}
+    "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj": {}
   },
   "projects": {
-    "C:\\academia\\HealthApp\\Entities\\Models.csproj": {
+    "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\academia\\HealthApp\\Entities\\Models.csproj",
+        "projectUniqueName": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\academia\\HealthApp\\Entities\\Models.csproj",
+        "projectPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj",
         "packagesPath": "C:\\Users\\felix\\.nuget\\packages\\",
-        "outputPath": "C:\\academia\\HealthApp\\Entities\\obj\\",
+        "outputPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\felix\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\academia\\HealthApp\\HealthApp\\HealthApp.csproj": {}
+    "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\HealthApp\\HealthApp.csproj": {}
   },
   "projects": {
-    "C:\\academia\\HealthApp\\DataAccess\\DataAccess.csproj": {
+    "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\DataAccess\\DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\academia\\HealthApp\\DataAccess\\DataAccess.csproj",
+        "projectUniqueName": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\DataAccess\\DataAccess.csproj",
         "projectName": "DataAccess",
-        "projectPath": "C:\\academia\\HealthApp\\DataAccess\\DataAccess.csproj",
+        "projectPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\DataAccess\\DataAccess.csproj",
         "packagesPath": "C:\\Users\\felix\\.nuget\\packages\\",
-        "outputPath": "C:\\academia\\HealthApp\\DataAccess\\obj\\",
+        "outputPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\DataAccess\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\felix\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -29,8 +29,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\academia\\HealthApp\\Entities\\Models.csproj": {
-                "projectPath": "C:\\academia\\HealthApp\\Entities\\Models.csproj"
+              "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj": {
+                "projectPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj"
               }
             }
           }
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\academia\\HealthApp\\Entities\\Models.csproj": {
+    "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\academia\\HealthApp\\Entities\\Models.csproj",
+        "projectUniqueName": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\academia\\HealthApp\\Entities\\Models.csproj",
+        "projectPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj",
         "packagesPath": "C:\\Users\\felix\\.nuget\\packages\\",
-        "outputPath": "C:\\academia\\HealthApp\\Entities\\obj\\",
+        "outputPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\felix\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -124,14 +124,14 @@
         }
       }
     },
-    "C:\\academia\\HealthApp\\HealthApp\\HealthApp.csproj": {
+    "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\HealthApp\\HealthApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\academia\\HealthApp\\HealthApp\\HealthApp.csproj",
+        "projectUniqueName": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\HealthApp\\HealthApp.csproj",
         "projectName": "HealthApp",
-        "projectPath": "C:\\academia\\HealthApp\\HealthApp\\HealthApp.csproj",
+        "projectPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\HealthApp\\HealthApp.csproj",
         "packagesPath": "C:\\Users\\felix\\.nuget\\packages\\",
-        "outputPath": "C:\\academia\\HealthApp\\HealthApp\\obj\\",
+        "outputPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\HealthApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\felix\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -149,11 +149,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\academia\\HealthApp\\DataAccess\\DataAccess.csproj": {
-                "projectPath": "C:\\academia\\HealthApp\\DataAccess\\DataAccess.csproj"
+              "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\DataAccess\\DataAccess.csproj": {
+                "projectPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\DataAccess\\DataAccess.csproj"
               },
-              "C:\\academia\\HealthApp\\Entities\\Models.csproj": {
-                "projectPath": "C:\\academia\\HealthApp\\Entities\\Models.csproj"
+              "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj": {
+                "projectPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj"
               }
             }
           }

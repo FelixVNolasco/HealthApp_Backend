@@ -8,6 +8,7 @@ namespace Models.Entities
         public string firstname { get; set; }
         public string lastname { get; set; }
         public string birthdate { get; set; }
+        public string career { get; set; }
         public string graduation_date { get; set; }
         public string phone_number { get; set; }
         public string email { get; set; }
