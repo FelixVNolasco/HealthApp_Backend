@@ -10,8 +10,8 @@ namespace Models.Entities
     public class MedicalCenter : IEntity
     {
         public int id { get; set; }
+        public string name { get; set; }
         public string address { get; set; }
         public string phoneNumber { get; set; }
-        public string rating { get; set; }
     }
 }

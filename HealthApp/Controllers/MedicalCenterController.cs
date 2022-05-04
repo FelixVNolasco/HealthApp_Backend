@@ -27,16 +27,16 @@ namespace HealthApp.Controllers
         {
             var medicalCenter = new MedicalCenter
             {
+                name = createMedicalCenterDto.name,
                 address = createMedicalCenterDto.address,
-                phoneNumber = createMedicalCenterDto.phoneNumber,
-                rating = createMedicalCenterDto.rating
+                phoneNumber = createMedicalCenterDto.phoneNumber,                
             };
 
             var responseStatusOk = medicalCenterRepository.CreateCenter(medicalCenter);
 
             if (responseStatusOk)
             {
-                return Ok();
+                return Ok("Succesfully Created");
             }
             else
             {
@@ -55,15 +55,15 @@ namespace HealthApp.Controllers
         [HttpGet("{id}")]
         public IActionResult GetCenter(int id)
         {
-            var particularDoctor = medicalCenterRepository.GetCenter(id);
+            var particularCenter = medicalCenterRepository.GetCenter(id);
 
-            if (particularDoctor.id == 0)
+            if (particularCenter.id == 0)
             {
                 return BadRequest("This Medical Center doesn't exists");
             }
             else
             {
-                return Ok(particularDoctor);
+                return Ok(particularCenter);
             }
         }
 
@@ -78,6 +78,7 @@ namespace HealthApp.Controllers
 
             }
 
+            existingCenter.name = updateMedicalCenterDto.name;
             existingCenter.phoneNumber = updateMedicalCenterDto.phoneNumber;
 
             var responseStatusOk = medicalCenterRepository.UpdateCenter(existingCenter);
@@ -94,7 +95,7 @@ namespace HealthApp.Controllers
 
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteDoctor(int id)
+        public IActionResult DeleteCenter(int id)
         {
             var responseStatusOk = medicalCenterRepository.RemoveCenter(id);
 

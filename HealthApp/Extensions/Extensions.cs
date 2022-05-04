@@ -7,7 +7,7 @@ namespace HealthApp.Extensions
     {
         public static DoctorDto AsDto(this Doctor doctor)
         {
-            return new DoctorDto(doctor.id, doctor.firstname, doctor.lastname, doctor.birthdate, doctor.graduation_date, doctor.phone_number, doctor.email, doctor.specialty);
+            return new DoctorDto(doctor.id, doctor.firstname, doctor.lastname, doctor.birthdate, doctor.graduation_date, doctor.phone_number, doctor.email, doctor.specialty, doctor.center);
         }
 
         public static ClinicalSpecialtyDto AsDto(this ClinicalSpecialty clinicalSpecialty)
@@ -17,7 +17,7 @@ namespace HealthApp.Extensions
 
         public static MedicalCenterDto AsDto(this MedicalCenter medicalCenter)
         {
-            return new MedicalCenterDto(medicalCenter.id, medicalCenter.address, medicalCenter.phoneNumber, medicalCenter.rating);
+            return new MedicalCenterDto(medicalCenter.id, medicalCenter.name, medicalCenter.address, medicalCenter.phoneNumber);
         }
     }
 }

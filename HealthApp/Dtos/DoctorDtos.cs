@@ -11,7 +11,8 @@ namespace HealthApp.Dtos
         string graduation_date,
         string phone_number,
         string email,
-        string specialty
+        string specialty,
+        string center
         );
 
     public record CreateDoctorDto(
@@ -22,7 +23,8 @@ namespace HealthApp.Dtos
         string graduation_date,
         string phone_number,
         string email,
-        string specialty
+        string specialty,
+        string center
         );
 
     public record UpdateDoctorDto(
@@ -31,7 +33,8 @@ namespace HealthApp.Dtos
         string lastName,
         string birthdate,
         string phone_number,
-        string email
+        string email,
+        string center
         );
 
 }

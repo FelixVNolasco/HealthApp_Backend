@@ -108,3 +108,9 @@ C:\academia\Proyectos\Tercer Proyecto\HealthApp\HealthApp\obj\Debug\net5.0\refin
 C:\academia\Proyectos\Tercer Proyecto\HealthApp\HealthApp\obj\Debug\net5.0\HealthApp.pdb
 C:\academia\Proyectos\Tercer Proyecto\HealthApp\HealthApp\obj\Debug\net5.0\HealthApp.genruntimeconfig.cache
 C:\academia\Proyectos\Tercer Proyecto\HealthApp\HealthApp\obj\Debug\net5.0\ref\HealthApp.dll
+C:\academia\Proyectos\Tercer Proyecto\HealthApp\HealthApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\academia\Proyectos\Tercer Proyecto\HealthApp\HealthApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\academia\Proyectos\Tercer Proyecto\HealthApp\HealthApp\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\academia\Proyectos\Tercer Proyecto\HealthApp\HealthApp\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\academia\Proyectos\Tercer Proyecto\HealthApp\HealthApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\academia\Proyectos\Tercer Proyecto\HealthApp\HealthApp\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll

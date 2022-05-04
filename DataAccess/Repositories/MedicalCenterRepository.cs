@@ -29,14 +29,14 @@ namespace DataAccess.Repositories
                 sqlConnection.ConnectionString = sqlClient.GetStringConnection();
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("INSERT INTO MedicalCenter (address, phoneNumber, rating) VALUES (@address, @phoneNumber, @rating)", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("INSERT INTO MedicalCenter (centerName, centerAddress, centerPhoneNumber) VALUES (@name, @address, @phoneNumber)", sqlConnection);
                 sqlCommand.CommandType = CommandType.Text;
                 sqlCommand.Parameters.Clear();
 
                 List<SqlParameter> list = new List<SqlParameter>();
+                list.Add(new SqlParameter("@name", medicalCenter.name));
                 list.Add(new SqlParameter("@address", medicalCenter.address));
-                list.Add(new SqlParameter("@phoneNumber", medicalCenter.phoneNumber));
-                list.Add(new SqlParameter("@rating", medicalCenter.rating));
+                list.Add(new SqlParameter("@phoneNumber", medicalCenter.phoneNumber));                
                 sqlCommand.Parameters.AddRange(list.ToArray<SqlParameter>());
                 sqlCommand.ExecuteNonQuery();
 
@@ -62,7 +62,7 @@ namespace DataAccess.Repositories
             {
                 sqlConnection.ConnectionString = sqlClient.GetStringConnection();
                 sqlConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand("SELECT id, address, phoneNumber, rating " +
+                SqlCommand sqlCommand = new SqlCommand("SELECT id, centerName, centerAddress, centerPhoneNumber " +
                                                        "FROM MedicalCenter", sqlConnection);
                 sqlCommand.CommandType = CommandType.Text;
                 SqlDataReader reader;
@@ -72,9 +72,9 @@ namespace DataAccess.Repositories
                 {
                     MedicalCenter medicalCenter = new MedicalCenter();
                     medicalCenter.id = Int32.Parse(reader["id"].ToString());
-                    medicalCenter.address = reader["address"].ToString();
-                    medicalCenter.phoneNumber = reader["phoneNumber"].ToString();
-                    medicalCenter.rating = reader["rating"].ToString();
+                    medicalCenter.name = reader["centerName"].ToString();
+                    medicalCenter.address = reader["centerAddress"].ToString();
+                    medicalCenter.phoneNumber = reader["centerPhoneNumber"].ToString();
 
                     medicalCenterList.Add(medicalCenter);
                 }
@@ -102,7 +102,7 @@ namespace DataAccess.Repositories
                 sqlConnection.ConnectionString = sqlClient.GetStringConnection();
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("SELECT id, address, phoneNumber, rating FROM MedicalCenter WHERE id = @id", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand("SELECT id, centerName, centerAddress, centerPhoneNumber FROM MedicalCenter WHERE id = @id", sqlConnection);
                 sqlCommand.CommandType = CommandType.Text;
 
                 sqlCommand.Parameters.Add("@id", SqlDbType.Int);
@@ -114,9 +114,9 @@ namespace DataAccess.Repositories
                 while (reader.Read())
                 {
                     medicalCenter.id = Int32.Parse(reader["id"].ToString());
-                    medicalCenter.address = reader["address"].ToString();
-                    medicalCenter.phoneNumber= reader["phoneNumber"].ToString();
-                    medicalCenter.rating = reader["rating"].ToString();
+                    medicalCenter.name = reader["centerName"].ToString();
+                    medicalCenter.address= reader["centerAddress"].ToString();
+                    medicalCenter.phoneNumber= reader["centerPhoneNumber"].ToString();
                 }
             }
             catch (Exception ex)
@@ -140,14 +140,15 @@ namespace DataAccess.Repositories
                 sqlConnection.ConnectionString = sqlClient.GetStringConnection();
                 sqlConnection.Open();
 
-                SqlCommand sqlCommand = new SqlCommand("UPDATE MedicalCenter SET phoneNumber  = @phoneNumber" +
+                SqlCommand sqlCommand = new SqlCommand("UPDATE MedicalCenter SET centerName = @name, centerPhoneNumber = @phoneNumber" +
                                                        " WHERE id = @id", sqlConnection);
                 sqlCommand.CommandType = CommandType.Text;
                 sqlCommand.Parameters.Clear();
 
                 List<SqlParameter> list = new List<SqlParameter>();
                 list.Add(new SqlParameter("@id", medicalCenter.id));
-                list.Add(new SqlParameter("@field", medicalCenter.phoneNumber));                
+                list.Add(new SqlParameter("@name", medicalCenter.name));
+                list.Add(new SqlParameter("@phoneNumber", medicalCenter.phoneNumber));
 
                 sqlCommand.Parameters.AddRange(list.ToArray<SqlParameter>());
                 sqlCommand.ExecuteNonQuery();

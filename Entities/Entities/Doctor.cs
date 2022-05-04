@@ -15,5 +15,8 @@ namespace Models.Entities
         public string field { get; set; }
         public string specialty { get; set; }
         public string description { get; set; }
+        public string center { get; set; }
+        public string centerAddress { get; set; }
+        public string centerPhoneNumber { get; set; }
     }
 }

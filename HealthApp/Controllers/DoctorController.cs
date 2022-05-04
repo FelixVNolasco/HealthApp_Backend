@@ -32,7 +32,8 @@ namespace HealthApp.Controllers
                 graduation_date = createDoctorDto.graduation_date,
                 phone_number = createDoctorDto.phone_number,
                 email = createDoctorDto.email,
-                specialty = createDoctorDto.specialty
+                specialty = createDoctorDto.specialty,
+                center = createDoctorDto.center
             };
 
             var responseStatusOk = doctorRepository.CreateDoctor(doctor);
@@ -91,6 +92,7 @@ namespace HealthApp.Controllers
             existingDoctor.birthdate = updateDoctorDto.birthdate;
             existingDoctor.phone_number = updateDoctorDto.phone_number;
             existingDoctor.email = updateDoctorDto.email;
+            existingDoctor.center = updateDoctorDto.center;
 
             var responseStatusOk = doctorRepository.UpdateDoctor(existingDoctor);
 
