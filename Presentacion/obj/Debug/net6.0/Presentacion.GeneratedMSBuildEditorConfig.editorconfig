@@ -1,0 +1,80 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Presentacion
+build_property.RootNamespace = Presentacion
+build_property.ProjectDir = C:\academia\Proyectos\Tercer Proyecto\HealthApp\Presentacion\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\academia\Proyectos\Tercer Proyecto\HealthApp\Presentacion
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/ClinicalSpecialties/ClinicalSpecialty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpbmljYWxTcGVjaWFsdGllc1xDbGluaWNhbFNwZWNpYWx0eS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/ClinicalSpecialties/EditClinicalSpecialty.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpbmljYWxTcGVjaWFsdGllc1xFZGl0Q2xpbmljYWxTcGVjaWFsdHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/ClinicalSpecialties/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2xpbmljYWxTcGVjaWFsdGllc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/Doctors/Doctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9jdG9yc1xEb2N0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/Doctors/EditDoctor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9jdG9yc1xFZGl0RG9jdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/Doctors/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9jdG9yc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/MedicalCenters/EditMedicCenter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVkaWNhbENlbnRlcnNcRWRpdE1lZGljQ2VudGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/MedicalCenters/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVkaWNhbENlbnRlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/MedicalCenters/MedicalCenter.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVkaWNhbENlbnRlcnNcTWVkaWNhbENlbnRlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/academia/Proyectos/Tercer Proyecto/HealthApp/Presentacion/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-ormly53atb
