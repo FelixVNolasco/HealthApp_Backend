@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IZRMB/GJihx/11BxerCw2AtWG4tjL+Fk92yfyqGu6EaDVUd+KH0f1lBodN9U5CDHaiT84h/iOdRcBbf3tTo/Og==",
+  "dgSpecHash": "iLY2zuW41GanxI5+VQytgrasET0BSO2saLOCknNo77BzK6nXdPsvVfmpVaWWci+bHEDTM//3yyJSMT1mJ99Zew==",
   "success": true,
-  "projectFilePath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\DataAccess\\DataAccess.csproj",
+  "projectFilePath": "C:\\academia\\Proyectos\\Tercer Proyecto\\App\\HealthApp_Backend\\DataAccess\\DataAccess.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\felix\\.nuget\\packages\\azure.core\\1.6.0\\azure.core.1.6.0.nupkg.sha512",
     "C:\\Users\\felix\\.nuget\\packages\\azure.identity\\1.3.0\\azure.identity.1.3.0.nupkg.sha512",

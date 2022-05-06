@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Presentacion\\Presentacion.csproj": {}
+    "C:\\academia\\Proyectos\\Tercer Proyecto\\App\\HealthApp_Backend\\Presentacion\\Presentacion.csproj": {}
   },
   "projects": {
-    "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Presentacion\\Presentacion.csproj": {
+    "C:\\academia\\Proyectos\\Tercer Proyecto\\App\\HealthApp_Backend\\Presentacion\\Presentacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Presentacion\\Presentacion.csproj",
+        "projectUniqueName": "C:\\academia\\Proyectos\\Tercer Proyecto\\App\\HealthApp_Backend\\Presentacion\\Presentacion.csproj",
         "projectName": "Presentacion",
-        "projectPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Presentacion\\Presentacion.csproj",
+        "projectPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\App\\HealthApp_Backend\\Presentacion\\Presentacion.csproj",
         "packagesPath": "C:\\Users\\felix\\.nuget\\packages\\",
-        "outputPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Presentacion\\obj\\",
+        "outputPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\App\\HealthApp_Backend\\Presentacion\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\felix\\AppData\\Roaming\\NuGet\\NuGet.Config",

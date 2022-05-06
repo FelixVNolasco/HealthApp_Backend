@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LnGjn+B7EOa+TKLIRGRD23VlVxiEerJf3tLXgNg28yWAP5sujEFiUbeN+31mBfg3amANAaGwcJutp5A9EZl87A==",
+  "dgSpecHash": "0vgaHaZEGLDBKT4B2ux517F/ebZ3/5+cTHUzxddN0FMXTK0DspMdkUBHI0m2RWOgzwgbT2dBkCLzIXWX/DBLTw==",
   "success": true,
-  "projectFilePath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj",
+  "projectFilePath": "C:\\academia\\Proyectos\\Tercer Proyecto\\App\\HealthApp_Backend\\Entities\\Models.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

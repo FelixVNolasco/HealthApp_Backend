@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj",
+      "projectUniqueName": "C:\\academia\\Proyectos\\Tercer Proyecto\\App\\HealthApp_Backend\\Entities\\Models.csproj",
       "projectName": "Models",
-      "projectPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\Models.csproj",
+      "projectPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\App\\HealthApp_Backend\\Entities\\Models.csproj",
       "packagesPath": "C:\\Users\\felix\\.nuget\\packages\\",
-      "outputPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Entities\\obj\\",
+      "outputPath": "C:\\academia\\Proyectos\\Tercer Proyecto\\App\\HealthApp_Backend\\Entities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\felix\\AppData\\Roaming\\NuGet\\NuGet.Config",

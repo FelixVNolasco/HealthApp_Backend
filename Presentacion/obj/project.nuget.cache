@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gmMCf7M8uNQnQI68PiVZZP6VPcqCTshcXADRssx5veOP8Jvo0HCv2CJ+TNsV5Y69aceh0Z9cwlxt65ZKbPaYlg==",
+  "dgSpecHash": "96b0WPeKy7obokAJ4/gGNWKmisg38BKwPkuDhs6NmOOGaWrrimxPgTTamLpmsTCNqMojaAO5khYkqcVzxghgDA==",
   "success": true,
-  "projectFilePath": "C:\\academia\\Proyectos\\Tercer Proyecto\\HealthApp\\Presentacion\\Presentacion.csproj",
+  "projectFilePath": "C:\\academia\\Proyectos\\Tercer Proyecto\\App\\HealthApp_Backend\\Presentacion\\Presentacion.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
