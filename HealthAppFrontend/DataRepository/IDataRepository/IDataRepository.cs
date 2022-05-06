@@ -10,5 +10,10 @@ namespace HealthAppFrontend.DataRepository.IDataRepository
         Task<T> GetByIdAsync(string ApiURL);
 
         Task<bool> InsertAsync(string ApiURL, T newObject);
+
+        Task<bool> UpdateAsync(string ApiURL, T newObject);
+
+        Task<bool> DeleteAsync(string ApiURL);
+
     }
 }

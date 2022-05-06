@@ -25,7 +25,7 @@ namespace HealthAppFrontend.DataRepository
 
             HttpResponseMessage response = await client.SendAsync(request);
 
-            if(response.StatusCode == HttpStatusCode.OK)
+            if (response.StatusCode == HttpStatusCode.OK)
             {
                 var stringJson = await response.Content.ReadAsStringAsync();
 
@@ -42,6 +42,8 @@ namespace HealthAppFrontend.DataRepository
 
             HttpResponseMessage response = await client.SendAsync(request);
 
+            //HttpResponseMessage response = await client.GetAsync(ApiURL);
+
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 var stringJson = await response.Content.ReadAsStringAsync();
@@ -51,9 +53,55 @@ namespace HealthAppFrontend.DataRepository
             return null;
         }
 
-        public Task<bool> InsertAsync(string ApiURL, T newObject)
+        public async Task<bool> InsertAsync(string ApiURL, T newObject)
         {
-            throw new System.NotImplementedException();
+            var request = new HttpRequestMessage(HttpMethod.Post, ApiURL);
+
+            var client = _httpClientFactory.CreateClient();
+
+            HttpResponseMessage response = await client.SendAsync(request);
+
+            //HttpResponseMessage response = await client.PostAsync(ApiURL, newObject);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> UpdateAsync(string ApiURL, T newObject)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Post, ApiURL);
+
+            var client = _httpClientFactory.CreateClient();
+
+            HttpResponseMessage response = await client.SendAsync(request);
+
+            //HttpResponseMessage response = await client.PutAsync(ApiURL, newObject);            
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public async Task<bool> DeleteAsync(string ApiURL)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, ApiURL);
+
+            var client = _httpClientFactory.CreateClient();            
+
+            HttpResponseMessage response = await client.DeleteAsync(ApiURL);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                var stringJson = await response.Content.ReadAsStringAsync();
+
+                return true;
+            }
+            return false;
         }
     }
 }
