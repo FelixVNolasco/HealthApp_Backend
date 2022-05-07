@@ -1,4 +1,5 @@
 ﻿using HealthAppFrontend.DataRepository.IDataRepository;
+using HealthAppFrontend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -38,11 +39,13 @@ namespace HealthAppFrontend.Controllers
 
         // POST: MedicalCenterFrontController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(MedicalCenterFront newMedicalCenter)
         {
             try
             {
+                string UrlWebApi = "http://localhost:20495/centers";
+                await _medicalCenterRepository.InsertAsync(UrlWebApi, newMedicalCenter);
                 return RedirectToAction(nameof(Index));
             }
             catch

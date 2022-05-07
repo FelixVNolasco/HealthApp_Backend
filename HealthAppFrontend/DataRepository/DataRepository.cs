@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace HealthAppFrontend.DataRepository
@@ -55,13 +56,12 @@ namespace HealthAppFrontend.DataRepository
 
         public async Task<bool> InsertAsync(string ApiURL, T newObject)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, ApiURL);
 
             var client = _httpClientFactory.CreateClient();
+            var stringPayload = JsonConvert.SerializeObject(newObject);
+            var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await client.SendAsync(request);
-
-            //HttpResponseMessage response = await client.PostAsync(ApiURL, newObject);
+            HttpResponseMessage response = await client.PostAsync(ApiURL, httpContent);
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -75,10 +75,10 @@ namespace HealthAppFrontend.DataRepository
             var request = new HttpRequestMessage(HttpMethod.Post, ApiURL);
 
             var client = _httpClientFactory.CreateClient();
+            var stringPayload = JsonConvert.SerializeObject(newObject);
+            var httpContent = new StringContent(stringPayload, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await client.SendAsync(request);
-
-            //HttpResponseMessage response = await client.PutAsync(ApiURL, newObject);            
+            HttpResponseMessage response = await client.PutAsync(ApiURL, httpContent);
 
             if (response.StatusCode == HttpStatusCode.OK)
             {
@@ -88,8 +88,7 @@ namespace HealthAppFrontend.DataRepository
         }
 
         public async Task<bool> DeleteAsync(string ApiURL)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get, ApiURL);
+        {            
 
             var client = _httpClientFactory.CreateClient();            
 

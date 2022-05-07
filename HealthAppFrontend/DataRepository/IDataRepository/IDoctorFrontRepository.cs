@@ -2,7 +2,7 @@
 
 namespace HealthAppFrontend.DataRepository.IDataRepository
 {
-    public interface IDoctorFrontRepository : IDataRepository<DoctorFront>
+    public interface IDoctorFrontRepository : IDataRepository<RichDoctorFront>
     {
     }
 }

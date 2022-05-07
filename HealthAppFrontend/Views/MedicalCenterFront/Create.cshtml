@@ -1,4 +1,4 @@
-﻿@model HealthAppFrontend.Models.CreateMedicalCenterFront
+﻿@model HealthAppFrontend.Models.MedicalCenterFront
 
 @{
     ViewData["Title"] = "Create";
@@ -6,12 +6,17 @@
 
 <h1>Create</h1>
 
-<h4>CreateMedicalCenterFront</h4>
+<h4>MedicalCenterFront</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="id" class="control-label"></label>
+                <input asp-for="id" class="form-control" />
+                <span asp-validation-for="id" class="text-danger"></span>
+            </div>*@
             <div class="form-group">
                 <label asp-for="name" class="control-label"></label>
                 <input asp-for="name" class="form-control" />

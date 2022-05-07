@@ -111,8 +111,10 @@ C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\ob
 C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\MedicalCenterFront\Index.cshtml.g.cs
 C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\ClinicalSpecialtyFront\Index.cshtml.g.cs
 C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\DoctorFront\Create.cshtml.g.cs
-C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\ClinicalSpecialtyFront\Create.cshtml.g.cs
-C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\MedicalCenterFront\Create.cshtml.g.cs
 C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\ClinicalSpecialtyFront\Details.cshtml.g.cs
 C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\MedicalCenterFront\Details.cshtml.g.cs
 C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\DoctorFront\Details.cshtml.g.cs
+C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\ClinicalSpecialtyFront\Create.cshtml.g.cs
+C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\MedicalCenterFront\Create.cshtml.g.cs
+C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\ClinicalSpecialtyFront\Delete.cshtml.g.cs
+C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\ClinicalSpecialtyFront\Edit.cshtml.g.cs

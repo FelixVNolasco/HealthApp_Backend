@@ -4,7 +4,7 @@ using System.Net.Http;
 
 namespace HealthAppFrontend.DataRepository
 {
-    public class DoctorFrontRepository : DataRepository<DoctorFront>, IDoctorFrontRepository
+    public class DoctorFrontRepository : DataRepository<RichDoctorFront>, IDoctorFrontRepository
     {
 
         private readonly IHttpClientFactory _httpClientFactory;
