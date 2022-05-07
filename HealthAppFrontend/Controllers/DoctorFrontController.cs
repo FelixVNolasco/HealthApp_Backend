@@ -1,4 +1,5 @@
 ﻿using HealthAppFrontend.DataRepository.IDataRepository;
+using HealthAppFrontend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -36,11 +37,13 @@ namespace HealthAppFrontend.Controllers
 
         // POST: DoctorFrontController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(RichDoctorFront richDoctorFront)
         {
             try
             {
+                string UrlWebApi = "http://localhost:20495/doctores";
+                await _doctorFrontRepository.InsertAsync(UrlWebApi, richDoctorFront);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -57,11 +60,13 @@ namespace HealthAppFrontend.Controllers
 
         // POST: DoctorFrontController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(int id, RichDoctorFront richDoctorFront)
         {
             try
             {
+                string UrlWebApi = $"http://localhost:20495/doctores/{id}";
+                await _doctorFrontRepository.UpdateAsync(UrlWebApi, richDoctorFront);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -78,11 +83,15 @@ namespace HealthAppFrontend.Controllers
 
         // POST: DoctorFrontController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> Delete(int id, RichDoctorFront richDoctorFront)
         {
             try
             {
+                string UrlWebApi = $"http://localhost:20495/doctores/{richDoctorFront.id}";
+
+                var response = await _doctorFrontRepository.DeleteAsync(UrlWebApi);
+
                 return RedirectToAction(nameof(Index));
             }
             catch

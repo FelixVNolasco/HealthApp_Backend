@@ -33,7 +33,7 @@ namespace HealthAppFrontend.Controllers
 
         //GET: ClinicalSpecialtyFrontController/Create
         public ActionResult Create()
-        {            
+        {
             return View();
         }
 
@@ -86,15 +86,14 @@ namespace HealthAppFrontend.Controllers
 
         // POST: ClinicalSpecialtyFrontController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task <ActionResult> Delete(int id, ClinicalSpecialtyFront clinicalSpecialtyToDelete)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> Delete(int id, ClinicalSpecialtyFront clinicalSpecialtyToDelete)
         {
             try
             {
                 string UrlWebApi = $"http://localhost:20495/specialties/{clinicalSpecialtyToDelete.id}";
-
                 var response = await _clinicalSpecialtyRepository.DeleteAsync(UrlWebApi);
-                
+
                 return RedirectToAction(nameof(Index));
             }
             catch

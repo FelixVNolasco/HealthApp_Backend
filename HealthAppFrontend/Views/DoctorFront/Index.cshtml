@@ -24,9 +24,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.birthdate)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.career)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.graduation_date)
             </th>
@@ -36,24 +33,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.email)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.field)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.specialty)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.description)
-            </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.center)
             </th>
-            @*<th>
-                @Html.DisplayNameFor(model => model.centerAddress)
-            </th>*@
-            @*<th>
-                @Html.DisplayNameFor(model => model.centerPhoneNumber)
-            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -72,9 +57,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.birthdate)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.career)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.graduation_date)
             </td>
@@ -84,28 +66,16 @@
             <td>
                 @Html.DisplayFor(modelItem => item.email)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.field)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.specialty)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.description)
-            </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.center)
             </td>
-            @*<td>
-                @Html.DisplayFor(modelItem => item.centerAddress)
-            </td>*@
-            @*<td>
-                @Html.DisplayFor(modelItem => item.centerPhoneNumber)
-            </td>*@
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Edit", "Edit", new {  id = item.id}) |
                 @Html.ActionLink("Details", "Details", new {  id = item.id }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Delete", "Delete", new {  id = item.id })
             </td>
         </tr>
 }

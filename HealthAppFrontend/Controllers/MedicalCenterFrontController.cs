@@ -62,11 +62,13 @@ namespace HealthAppFrontend.Controllers
 
         // POST: MedicalCenterFrontController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(int id, MedicalCenterFront medicalCenterFront)
         {
             try
             {
+                string UrlWebApi = $"http://localhost:20495/centers/{id}";
+                await _medicalCenterRepository.UpdateAsync(UrlWebApi, medicalCenterFront);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -83,11 +85,14 @@ namespace HealthAppFrontend.Controllers
 
         // POST: MedicalCenterFrontController/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        //[ValidateAntiForgeryToken]
+        public async Task<ActionResult> Delete(int id, MedicalCenterFront medicalCenterFront)
         {
             try
             {
+                string UrlWebApi = $"http://localhost:20495/centers/{medicalCenterFront.id}";
+
+                var response = await _medicalCenterRepository.DeleteAsync(UrlWebApi);
                 return RedirectToAction(nameof(Index));
             }
             catch
