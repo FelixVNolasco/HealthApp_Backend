@@ -1,4 +1,4 @@
-﻿@model HealthAppFrontend.Models.DoctorFront
+﻿@model HealthAppFrontend.Models.UpdateDoctorFront
 
 @{
     ViewData["Title"] = "Edit";
@@ -12,11 +12,6 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group">
-                <label asp-for="id" class="control-label"></label>
-                <input asp-for="id" class="form-control" />
-                <span asp-validation-for="id" class="text-danger"></span>
-            </div>*@
             <div class="form-group">
                 <label asp-for="firstname" class="control-label"></label>
                 <input asp-for="firstname" class="form-control" />
@@ -32,11 +27,6 @@
                 <input asp-for="birthdate" class="form-control" />
                 <span asp-validation-for="birthdate" class="text-danger"></span>
             </div>
-@*            <div class="form-group">
-                <label asp-for="graduation_date" class="control-label"></label>
-                <input asp-for="graduation_date" class="form-control" />
-                <span asp-validation-for="graduation_date" class="text-danger"></span>
-            </div>*@
             <div class="form-group">
                 <label asp-for="phone_number" class="control-label"></label>
                 <input asp-for="phone_number" class="form-control" />
@@ -47,11 +37,6 @@
                 <input asp-for="email" class="form-control" />
                 <span asp-validation-for="email" class="text-danger"></span>
             </div>
-@*            <div class="form-group">
-                <label asp-for="specialty" class="control-label"></label>
-                <input asp-for="specialty" class="form-control" />
-                <span asp-validation-for="specialty" class="text-danger"></span>
-            </div>*@
             <div class="form-group">
                 <label asp-for="center" class="control-label"></label>
                 <input asp-for="center" class="form-control" />

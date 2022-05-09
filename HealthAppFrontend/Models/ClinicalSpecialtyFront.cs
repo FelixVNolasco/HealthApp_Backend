@@ -1,4 +1,6 @@
-﻿namespace HealthAppFrontend.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace HealthAppFrontend.Models
 {
     public class ClinicalSpecialtyFront
     {

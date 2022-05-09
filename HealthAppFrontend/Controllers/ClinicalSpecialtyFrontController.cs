@@ -2,12 +2,14 @@
 using HealthAppFrontend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using sweetalert.Controllers;
+using sweetalert.Models;
 using System;
 using System.Threading.Tasks;
 
 namespace HealthAppFrontend.Controllers
 {
-    public class ClinicalSpecialtyFrontController : Controller
+    public class ClinicalSpecialtyFrontController : BaseController
     {
 
         private readonly IClinicalSpecialtyRepository _clinicalSpecialtyRepository;
@@ -17,7 +19,7 @@ namespace HealthAppFrontend.Controllers
             _clinicalSpecialtyRepository = clinicalSpecialtyRepository;
         }
         // GET: ClinicalSpecialtyFrontController
-        public async Task<ActionResult> Index()
+        public new async Task<ActionResult> Index()
         {
             string UrlWebApi = "http://localhost:20495/specialties";
             return View(await _clinicalSpecialtyRepository.GetAllAsync(UrlWebApi));
@@ -47,10 +49,12 @@ namespace HealthAppFrontend.Controllers
             {
                 string UrlWebApi = "http://localhost:20495/specialties";
                 await _clinicalSpecialtyRepository.InsertAsync(UrlWebApi, newClinicalSpecialty);
+                //Notify("Se ha creado correctamente", notificationType: NotificationType.success);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                //Notify("No ha sido posible crear", notificationType: NotificationType.error);
                 return View();
             }
         }
@@ -70,10 +74,12 @@ namespace HealthAppFrontend.Controllers
             {
                 string UrlWebApi = $"http://localhost:20495/specialties/{id}";
                 await _clinicalSpecialtyRepository.UpdateAsync(UrlWebApi, editClinicalSpecialty);
+                //Notify("Se ha actualizado correctamente", notificationType: NotificationType.success);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                //Notify("No ha sido posible actualizar", notificationType: NotificationType.error);
                 return View();
             }
         }
@@ -91,13 +97,14 @@ namespace HealthAppFrontend.Controllers
         {
             try
             {
-                string UrlWebApi = $"http://localhost:20495/specialties/{clinicalSpecialtyToDelete.id}";
+                string UrlWebApi = $"http://localhost:20495/specialties/{clinicalSpecialtyToDelete.id}";                
                 var response = await _clinicalSpecialtyRepository.DeleteAsync(UrlWebApi);
-
+                //Notify("Se ha eliminado correctamente", notificationType: NotificationType.success);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                //Notify("No se ha podido eliminar la especialidad debido a una dependencia", notificationType: NotificationType.error);
                 return View();
             }
         }

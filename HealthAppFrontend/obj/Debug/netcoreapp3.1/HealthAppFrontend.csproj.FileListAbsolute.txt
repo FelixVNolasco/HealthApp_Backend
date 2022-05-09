@@ -122,3 +122,4 @@ C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\ob
 C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\MedicalCenterFront\Delete.cshtml.g.cs
 C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\DoctorFront\Edit.cshtml.g.cs
 C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\DoctorFront\Delete.cshtml.g.cs
+C:\academia\Proyectos\Tercer Proyecto\App\HealthApp_Backend\HealthAppFrontend\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_notificationPartial.cshtml.g.cs

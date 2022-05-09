@@ -2,11 +2,13 @@
 using HealthAppFrontend.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using sweetalert.Controllers;
+using sweetalert.Models;
 using System.Threading.Tasks;
 
 namespace HealthAppFrontend.Controllers
 {
-    public class DoctorFrontController : Controller
+    public class DoctorFrontController : BaseController
     {
 
         private readonly IDoctorFrontRepository _doctorFrontRepository;
@@ -44,10 +46,12 @@ namespace HealthAppFrontend.Controllers
             {
                 string UrlWebApi = "http://localhost:20495/doctores";
                 await _doctorFrontRepository.InsertAsync(UrlWebApi, richDoctorFront);
+                //Notify("Se ha creado correctamente", notificationType: NotificationType.success);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                //Notify("No ha sido posible crear", notificationType: NotificationType.error);
                 return View();
             }
         }
@@ -67,10 +71,12 @@ namespace HealthAppFrontend.Controllers
             {
                 string UrlWebApi = $"http://localhost:20495/doctores/{id}";
                 await _doctorFrontRepository.UpdateAsync(UrlWebApi, richDoctorFront);
+                //Notify("Se ha actualizado correctamente", notificationType: NotificationType.success);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                //Notify("No ha sido posible actualizar", notificationType: NotificationType.error);
                 return View();
             }
         }
@@ -89,13 +95,13 @@ namespace HealthAppFrontend.Controllers
             try
             {
                 string UrlWebApi = $"http://localhost:20495/doctores/{richDoctorFront.id}";
-
                 var response = await _doctorFrontRepository.DeleteAsync(UrlWebApi);
-
+                //Notify("Se ha eliminado correctamente", notificationType: NotificationType.success);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
+                //Notify("No se ha podido eliminar el doctor", notificationType: NotificationType.error);
                 return View();
             }
         }
